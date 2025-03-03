@@ -1,6 +1,8 @@
 from telebot import TeleBot
 from telebot.storage import StateMemoryStorage
-from config_data import config
+from config_data.config import SiteSettings
+
+site = SiteSettings()
 
 storage = StateMemoryStorage()
-bot = TeleBot(token=config.BOT_TOKEN, state_storage=storage)
+bot = TeleBot(token=site.bot_token.get_secret_value(), state_storage=storage)
